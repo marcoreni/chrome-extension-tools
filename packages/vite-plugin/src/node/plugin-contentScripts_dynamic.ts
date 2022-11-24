@@ -114,7 +114,6 @@ export const pluginDynamicContentScripts: CrxPluginFn = () => {
           if (config.command === 'build') {
             return `export default import.meta.CRX_DYNAMIC_SCRIPT_${script.refId};`
           } else if (typeof script.fileName === 'string') {
-            await fileReady(script)
             return `export default ${JSON.stringify(script.fileName)};`
           } else {
             throw new Error(
